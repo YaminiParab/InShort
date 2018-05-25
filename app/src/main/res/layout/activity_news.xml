@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.practice.inshort.ui.NewsActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:minHeight="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@android:color/white"
+            android:background="@color/colorWhite"
+            >
+
+            <TextView
+                android:id="@+id/topStoriesView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="yamini"
+                tools:background="@color/colorWhite"
+                android:drawableLeft="@drawable/search"
+                android:clickable="true"
+                />
+            <TextView
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:text="Top Stories"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/refresh"/>
+
+
+        </android.support.v7.widget.Toolbar>
+
+
+
+
+
+
+
+
+
+        <!-- Layout for content is here. This can be a RelativeLayout  -->
+
+    </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbarlayout"
+            android:id="@+id/news_detail"
+            />
+
+
+
+
+
+
+
+</RelativeLayout>
