@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:layout_margin="1dp"
+    android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -22,62 +23,86 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         </android.support.design.widget.AppBarLayout>
-
-
-
-
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/category_heading"
-        android:layout_below="@+id/toolbar_container"
-        >
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CATEGORIES"
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cat"
-        android:layout_below="@+id/category_heading">
-        <android.support.v7.widget.RecyclerView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recyclerview"
-            android:orientation="horizontal"
-            >
+            android:layout_below="@+id/toolbar_container"
 
-        </android.support.v7.widget.RecyclerView>
+            android:layout_alignParentTop="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_heading"
+                    android:paddingTop="70dp"
+                    android:paddingBottom="20dp"
+                    >
 
-    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CATEGORIES"
+                        android:textColor="@color/colorBlack"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cat"
+                    android:layout_below="@+id/category_heading">
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recyclerview"
+                        android:orientation="horizontal"
+                        >
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cat"
+                    android:id="@+id/catText"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOPICS"
+                        android:textColor="@color/colorBlack"
+                        />
+                </RelativeLayout>
 
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/catText">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cat">
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/topics"
+                        android:orientation="horizontal"
+                        >
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/topics"
-            android:orientation="horizontal"
-            >
-
-        </android.support.v7.widget.RecyclerView>
+                    </android.support.v7.widget.RecyclerView>
 
 
-    </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
 
 
 
