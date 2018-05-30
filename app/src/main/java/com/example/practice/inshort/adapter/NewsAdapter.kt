@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.singlenews.view.*
 class NewsAdapter(val newsList: ArrayList<News>, val context:Context) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
 
-
+    private val android: ArrayList<News>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.ViewHolder {
 
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.singlenews, parent, false))
@@ -26,10 +26,10 @@ class NewsAdapter(val newsList: ArrayList<News>, val context:Context) : Recycler
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val news = newsList?.get(position);
-        holder.published_date.setText(news.date)
+        holder.published_date.setText(news.publishedAt)
         holder.news_title.setText(news.title)
-        holder.short_desciption.setText(news.short_description)
-        Picasso.with(context).load(news.image).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.news_image)
+        holder.short_desciption.setText(news.description)
+//        Picasso.with(context).load(news.image).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.news_image)
     }
 
     class ViewHolder(view:View):RecyclerView.ViewHolder(view) {
