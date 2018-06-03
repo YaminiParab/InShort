@@ -29,7 +29,7 @@ class NewsAdapter(val newsList: ArrayList<News>, val context:Context) : Recycler
         holder.published_date.setText(news.publishedAt)
         holder.news_title.setText(news.title)
         holder.short_desciption.setText(news.description)
-//        Picasso.with(context).load(news.image).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.news_image)
+        Picasso.with(context).load(news.urlToImage).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.news_image)
     }
 
     class ViewHolder(view:View):RecyclerView.ViewHolder(view) {
