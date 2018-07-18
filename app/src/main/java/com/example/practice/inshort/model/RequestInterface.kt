@@ -1,4 +1,4 @@
-package com.example.practice.inshort.modal
+package com.example.practice.inshort.model
 
 import retrofit2.Call;
 import retrofit2.http.GET;

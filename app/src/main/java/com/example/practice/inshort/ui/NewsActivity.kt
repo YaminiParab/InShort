@@ -3,49 +3,26 @@ package com.example.practice.inshort.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import android.view.View
-import android.widget.TextView
 import com.example.practice.inshort.R
 import com.example.practice.inshort.adapter.NewsAdapter
-import com.example.practice.inshort.modal.News
+import com.example.practice.inshort.model.News
 import kotlinx.android.synthetic.main.activity_news.*
 
 import java.util.*
 //import com.example.practice.inshort.modal.JSONResponse
-import android.R.attr.data
 //import jdk.nashorn.internal.objects.Global.getJSON
-import com.example.practice.inshort.modal.RequestInterface
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 //import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.Retrofit
-import android.R.attr.data
 import android.util.Log
 //import jdk.nashorn.internal.objects.Global.getJSON
-import com.example.practice.inshort.modal.JSONResponse
-import android.R.attr.data
-import android.util.JsonReader
 //import com.sun.xml.internal.ws.streaming.XMLStreamReaderUtil.close
-import java.nio.file.Files.size
 
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.search_by_category.*
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import org.json.JSONStringer
-import java.io.BufferedReader
-import java.io.File
 import java.io.InputStream
+import kotlin.collections.ArrayList
 
 
 class NewsActivity : Activity() {
@@ -53,7 +30,9 @@ class NewsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
-        get_json();
+
+
+//        get_json();
 
          //on click of search icon redirect to search detail activity
          val topstories = findViewById<View>(R.id.topStoriesView)
@@ -63,15 +42,30 @@ class NewsActivity : Activity() {
          }
     }
 
+//    override fun onResume() {
+//        super.onResume()
+//        val intent = intent
+//        var topic_name = intent.getStringExtra("topic_name")
+//        if (topic_name != null) {
+//            Log.d("topic namesdsdsdsadsa", topic_name)
+//            get_json();
+//        }
+//    }
+//    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+//        val intent = intent
+//        var topic_name = intent.getStringExtra("topic_name")
+//        if (topic_name != null) {
+//            Log.d("topic namesdsdsdsadsa", topic_name)
+//            get_json();
+//        }
+//    }
 
-
-    public fun get_json() {
+    public fun get_json(): ArrayList<News> {
         val newsList: ArrayList<News> = ArrayList()
         var json:String
-
         try {
             var gson:Gson=Gson()
-            val inputStream:InputStream = assets.open("news.json")
+            val inputStream:InputStream = application.assets.open("news.json")
             val inputString = inputStream.bufferedReader().use{it.readText()}
 
             // convert string into jsonobject
@@ -91,14 +85,11 @@ class NewsActivity : Activity() {
                 }
 
             }
-            news_detail.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-            val adapter = NewsAdapter(newsList, this);
-            news_detail.adapter = adapter
 
         } catch (e:Exception){
             Log.d("error :", e.toString())
         }
-
+            return newsList
             }
 
     }

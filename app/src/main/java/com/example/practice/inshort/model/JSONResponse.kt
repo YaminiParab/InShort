@@ -1,4 +1,4 @@
-package com.example.practice.inshort.modal;
+package com.example.practice.inshort.model;
 
 class JSONResponse {
 //    val android: Array<News>? = null

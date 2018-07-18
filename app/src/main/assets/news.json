@@ -221,6 +221,28 @@
       "publishedAt": "2018-05-28T05:08:03Z",
 	  "topics":["World","Business"],
 	  "categories":["All News","Trending","Top Stories"]
+    },
+    {
+      "source":  "https://www.iplt20.com",
+      "author": "Kirk Spano",
+      "title": "Standout batting performance",
+      "description": "The innings of the match was played by Shane Watson. The CSK opener did not open his account until he had played ten balls. But once the swing disappeared, the 36-year old turned a different batsman altogether. He steadily switched gears, caught up to a run-a-ball 19, brought up his half-century off 33 balls and then raced to his century 18 balls later. In the middle part of his innings, he found the boundary regularly; pace and spin were treated with equal disdain. He favoured the leg-side and hit all his eight sixes on that side of the ground.",
+      "url": "https://www.iplt20.com/news/144919/report-final-csk-vs-srh",
+      "urlToImage": "https://iplplatform-static-files.s3.amazonaws.com/IPL/photo/2018/05/27/56252ea1-34da-421b-93e4-54c6b5ec2986/RON_3496.JPG",
+      "publishedAt": "2018-05-28T05:08:03Z",
+      "topics":["IPL","Business"],
+      "categories":["All News","Trending","Top Stories"]
+    },
+    {
+      "source":  "https://www.iplt20.com",
+      "author": "Kirk Spano",
+      "title": "Standout batting performance",
+      "description": "The innings of the match was played by Shane Watson. The CSK opener did not open his account until he had played ten balls. But once the swing disappeared, the 36-year old turned a different batsman altogether. He steadily switched gears, caught up to a run-a-ball 19, brought up his half-century off 33 balls and then raced to his century 18 balls later. In the middle part of his innings, he found the boundary regularly; pace and spin were treated with equal disdain. He favoured the leg-side and hit all his eight sixes on that side of the ground.",
+      "url": "https://www.iplt20.com/news/144170/preview-final-csk-vs-srh",
+      "urlToImage": "https://iplplatform-static-files.s3.amazonaws.com/IPL/photo/2018/05/27/b9ed7c01-9b33-4f0a-a414-73803e0f97b5/preview-final.jpg",
+      "publishedAt": "2018-05-28T05:08:03Z",
+      "topics":["IPL","Business"],
+      "categories":["All News","Trending","Top Stories"]
     }
   ]
 }

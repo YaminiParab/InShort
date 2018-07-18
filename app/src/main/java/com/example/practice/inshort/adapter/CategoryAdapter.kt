@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.practice.inshort.R
-import com.example.practice.inshort.modal.Category
+import com.example.practice.inshort.model.Category
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.search.view.*
-import kotlinx.android.synthetic.main.singleitem.view.*
-import kotlinx.android.synthetic.main.singlenews.view.*
 
 class CategoryAdapter(val categoryList: ArrayList<Category>, val context: Context): RecyclerView.Adapter<CategoryAdapter.ViewHolder>()  {
 

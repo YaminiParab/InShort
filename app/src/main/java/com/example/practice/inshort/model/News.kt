@@ -1,4 +1,4 @@
-package com.example.practice.inshort.modal
+package com.example.practice.inshort.model
 
 //data class News(val image:Int, val title:String, val short_description:String, val date:String)
 
