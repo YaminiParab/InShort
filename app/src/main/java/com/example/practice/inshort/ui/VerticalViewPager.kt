@@ -5,8 +5,11 @@ import android.graphics.Color
 import android.support.design.widget.Snackbar
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.VISIBLE
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.practice.inshort.R
 
@@ -47,15 +50,16 @@ class VerticalViewPager : ViewPager {
     }
 
     override fun onTouchEvent(ev: MotionEvent): Boolean {
-        var snackbar = Snackbar.make(this, "Had a snack at Snackbar", Snackbar.LENGTH_LONG)
-                    snackbar.setActionTextColor(Color.BLACK);
-                    var snackbarView = snackbar.getView();
-                    var textView = snackbarView.findViewById<TextView>(android.support.design.R.id.snackbar_text)
-        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like, 0, 0, 0);
-//        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.share, 0, 0, 0);
-        textView.setCompoundDrawablePadding(getResources().getDimensionPixelOffset(R.dimen.fab_margin));
-                    snackbarView.setBackgroundColor(Color.WHITE);
-                    snackbar.show()
+//        var user_activity :LinearLayout
+//         user_activity = findViewById<LinearLayout>(R.id.user_activity_layout)
+//        if (user_activity.getVisibility() == View.VISIBLE)
+//        {
+//            user_activity.setVisibility(View.INVISIBLE);
+//        }
+//        else
+//        {
+//            user_activity.setVisibility(View.VISIBLE);
+//        }
 
         return super.onTouchEvent(swapXY(ev))
     }

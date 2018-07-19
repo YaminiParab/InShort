@@ -29,6 +29,7 @@ class NewsFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view: View
         view = inflater.inflate(R.layout.activity_news, container, false)
+
         var news_detail = view.news_detail
         var newsActivity = NewsActivity()
         var newsList = get_json();

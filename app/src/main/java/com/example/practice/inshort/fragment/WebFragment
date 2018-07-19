@@ -1,0 +1,46 @@
+package com.example.practice.inshort.fragment
+
+import android.content.Context
+import android.net.Uri
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
+
+import com.example.practice.inshort.R
+
+class WebFragment : Fragment() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+
+        val view: View
+        var mywebview: WebView? = null
+       val mypref = context?.getSharedPreferences("source_url", MODE_PRIVATE)
+       val new_url = mypref?.getString("news_url","")
+       Log.d("latest_url", new_url)
+
+
+
+        view = inflater.inflate(R.layout.news_webview, container, false)
+        mywebview = view.findViewById<WebView>(R.id.webview)
+        mywebview!!.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                view?.loadUrl(new_url)
+                return true
+            }
+        }
+        mywebview!!.loadUrl(new_url)
+        return view
+    }
+
+}

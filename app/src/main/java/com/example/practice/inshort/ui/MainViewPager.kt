@@ -17,7 +17,7 @@ class MainViewPager: AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.my_toolbar))
         var viewpager = findViewById<ViewPager>(R.id.main_viewpager)
         if (viewpager != null) {
-            val pagerAdapter = SwipeAdapter(supportFragmentManager)
+            val pagerAdapter = SwipeAdapter(supportFragmentManager, 0)
             viewpager.adapter = pagerAdapter
             viewpager.currentItem = 0
         }

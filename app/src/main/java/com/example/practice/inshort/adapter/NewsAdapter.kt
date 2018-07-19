@@ -3,15 +3,22 @@ package com.example.practice.inshort.adapter
 import android.support.v7.widget.RecyclerView
 import com.example.practice.inshort.model.News
 import android.content.Context
+import android.os.Bundle
+import android.support.v4.app.FragmentManager
 import android.support.v4.view.PagerAdapter
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.example.practice.inshort.R
+import com.example.practice.inshort.fragment.BlankFragment
+import com.example.practice.inshort.fragment.NewsFragment
+import com.example.practice.inshort.fragment.TopicFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.singlenews.view.*
 
@@ -45,10 +52,36 @@ class NewsAdapter(val context: Context, val newsList:List<News>?)
         newsDesc.text = newsList?.get(position)?.description
         newsDate.text = newsList?.get(position)?.publishedAt
 //        newsSource.text = newsList?.get(position)?.source
-//        val source_url = newsList?.get(position.toInt())?.url
+        val source_url = newsList?.get(position)?.url
+
 
 
         container.addView(itemView)
+
+
+        itemView.setOnTouchListener {v: View, m: MotionEvent ->
+            var user_activity :LinearLayout
+            user_activity = v.findViewById<LinearLayout>(R.id.user_activity_layout)
+            if (user_activity.getVisibility() == View.VISIBLE)
+            {
+                user_activity.setVisibility(View.INVISIBLE);
+            }
+            else
+            {
+                user_activity.setVisibility(View.VISIBLE);
+            }
+            val mypref = context.getSharedPreferences("source_url", Context.MODE_PRIVATE)
+            val editor =mypref.edit()
+            editor.putString("news_url",source_url )
+            editor.commit()
+
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+            true
+        }
+
+
+
+
         return itemView
 
     }
