@@ -18,11 +18,7 @@ import com.example.practice.inshort.entity.NewsEntity
 import com.example.practice.inshort.model.NewsViewModel
 import com.example.practice.inshort.ui.NewsActivity
 import com.example.practice.inshort.ui.VerticalViewPager
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_news.view.*
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.InputStream
 
 class NewsFragment : Fragment() {
     lateinit var mNewsViewModel: NewsViewModel
@@ -34,10 +30,8 @@ class NewsFragment : Fragment() {
         view = inflater.inflate(R.layout.activity_news, container, false)
 
         var news_detail = view.news_detail
-        var newsActivity = NewsActivity()
-//        var newsList = get_json();
 
-//        news_detail.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false);
+        news_detail.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false);
         var adapter = NewsAdapter(view.context);
 
 

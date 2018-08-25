@@ -55,8 +55,8 @@ class SearchByCategory  : AppCompatActivity (){
         topicList.add(Topic(R.drawable.travel, "Travel"))
         topicList.add(Topic(R.drawable.misc, "Miscellaneous"))
 
-        val topics_adapter = TopicAdapter(topicList, this)
-        topics.adapter = topics_adapter
+//        val topics_adapter = TopicAdapter(topicList, this)
+//        topics.adapter = topics_adapter
 
 
 

@@ -9,16 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.practice.inshort.R
-import com.example.practice.inshort.R.id.add
 import com.example.practice.inshort.fragment.NewsFragment
 import com.example.practice.inshort.fragment.TopicFragment
 import com.example.practice.inshort.model.Topic
-import com.example.practice.inshort.ui.NewsActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.singleitem.view.*
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
+import com.example.practice.inshort.ui.MainViewPager
 
-class TopicAdapter (val topicsList: ArrayList<Topic>, val context:Context):RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
+
+class TopicAdapter (val fragment : Fragment, val topicsList: ArrayList<Topic>, val context:Context):RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
     lateinit var mContext:Context
+
     init {
         mContext=context
     }
@@ -31,14 +34,49 @@ class TopicAdapter (val topicsList: ArrayList<Topic>, val context:Context):Recyc
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val topics = topicsList?.get(position);
         holder.topic_name.setText(topics.image_name)
         Picasso.with(context).load(topics.image).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.topic_image)
         holder.topic_image.setOnClickListener {
-            val intent:Intent = Intent(context, NewsFragment::class.java)
+            var newsfragment = NewsFragment()
+            var topicfragement = TopicFragment()
+           // lateinit var fragment_manager: FragmentManager
+
+
+//            val manager: FragmentManager
+//            val fragmentManager = manager.beginTransaction()
+
+//            val transaction = fragment.fragmentManager
+//            if (transaction != null) {
+////                transaction.beginTransaction().remove(topicfragement).commit()
+////                transaction.beginTransaction().add(R.id.vPager,newsfragment).commit()
+//                transaction.beginTransaction().replace(
+//                        R.id.main_search_layout, newsfragment).commit();
+//                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//                transaction.tran
+//            }
+//            val fragmentManager = context.getFragmentManager()
+//            fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
+//                    .commit()
+
+
+//            val intent:Intent = Intent(context, NewsFragment::class.java)
 
 //            intent.putExtra("topic_name", topics.image_name);
-            mContext.startActivity(intent);
+            var view_pager_obj = MainViewPager()
+            //view_pager_obj.setViewPagerCurrentPage(1)
+//            topicfragement.setViewPager(1)
+//            CallViewPagerInterface().setViewPagerCurrentPage(1)
+
+//            if(fragment is TopicFragment){
+//                fragment.setViewPager(1)
+//            }
+
+                var newsadp = NewsAdapter(mContext)
+//            view_pager_obj.adapter = newsadp
+            //SwipeAdapter(fragment_manager, 1, AppCompatActivity())
+
         }
     }
 
@@ -50,7 +88,9 @@ class TopicAdapter (val topicsList: ArrayList<Topic>, val context:Context):Recyc
             mView=view
 
         }
+
         val topic_image = view.imageview
+
         val topic_name = view.image_name
 
 
@@ -59,6 +99,7 @@ class TopicAdapter (val topicsList: ArrayList<Topic>, val context:Context):Recyc
 
 
     }
+
 
 
 }

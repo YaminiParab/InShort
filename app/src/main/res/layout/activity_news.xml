@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.practice.inshort.ui.NewsActivity">
+    tools:context="com.example.practice.inshort.ui.NewsActivity"
+    android:id="@+id/main_new_detail">
 
     <com.example.practice.inshort.ui.VerticalViewPager
         android:layout_width="match_parent"
@@ -52,25 +53,16 @@
         </android.support.v7.widget.Toolbar>
 
 
-
-
-
-
-
-
-
-        <!-- Layout for content is here. This can be a RelativeLayout  -->
-
     </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbarlayout"
-            android:id="@+id/news_detail"
-            />
 
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarlayout"
+        android:id="@+id/news_detail"
+        />
 
 
 

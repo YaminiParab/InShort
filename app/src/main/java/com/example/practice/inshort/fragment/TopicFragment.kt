@@ -1,5 +1,6 @@
 package com.example.practice.inshort.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -21,15 +22,44 @@ import com.example.practice.inshort.model.Topic
 import kotlinx.android.synthetic.main.search_by_category.*
 import kotlinx.android.synthetic.main.search_by_category.view.*
 import java.util.ArrayList
+import android.app.Activity
+import com.example.practice.inshort.ui.Callback
+import com.example.practice.inshort.ui.MainViewPager
 
-class TopicFragment : Fragment() {
+
+class TopicFragment : Fragment(){
+    var frgment_page:Int = 0
+
+
 
     val categoryList: ArrayList<Category> = ArrayList()
     val topicList: ArrayList<Topic> = ArrayList()
+    private lateinit var mCallback2: Callback
+    private var listener: Callback? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//    }
+    lateinit var topic_context:Context
+
+
+    companion object{
+        private val ARG_CAUGHT = "myFragment_caught"
+//        lateinit var activity: AppCompatActivity
+        private lateinit var mCallback1: Callback
+        fun newInstance(my_activity: AppCompatActivity):TopicFragment{
+//            if (context is Callback){
+            mCallback1 = my_activity as Callback
+//            }
+            val fragment = TopicFragment()
+            return fragment
+        }
+        fun getcontext():Callback {
+            return mCallback1
+        }
     }
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -37,6 +67,7 @@ class TopicFragment : Fragment() {
 
         val view: View
         view = inflater.inflate(R.layout.search_by_category, container, false)
+        topic_context = view.context
         var recyclerview = view.recyclerview
         var topics = view.topics
 
@@ -72,13 +103,48 @@ class TopicFragment : Fragment() {
         topicList.add(Topic(R.drawable.travel, "Travel"))
         topicList.add(Topic(R.drawable.misc, "Miscellaneous"))
 
-        val topics_adapter = TopicAdapter(topicList, view.context)
+        val topics_adapter = TopicAdapter(this, topicList, view.context)
         topics.adapter = topics_adapter
+
+        var newPageNumber = 27
+//        mCallback1.setViewPagerCurrentPage(newPageNumber);
         return view
+    }
+
+    /*override fun setViewPagerCurrentPage(page: Int) {
+        frgment_page = page
+    }
+*/
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if (context is AppCompatActivity) {
+            mCallback1 = context as Callback
+        } else {
+            throw RuntimeException(context!!.toString() + " must implement FragmentEvent")
+        }
     }
 
 
 
+    fun setViewPager(i:Int) {
+        if (i>=0) {
+            mCallback2.setViewPagerCurrentPage(i)
+        }
+
+    }
+
+    fun onButtonPressed(msg: Int) {
+        listener?.setViewPagerCurrentPage(msg)
+    }
+
+    interface Callback {
+        fun setViewPagerCurrentPage(page: Int)
+    }
+
+    fun setListener(callback:AppCompatActivity) {
+        this.mCallback2 = callback as Callback
+    }
 }
+
 
 
