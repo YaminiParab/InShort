@@ -1,17 +1,11 @@
 package com.example.practice.inshort.ui
 
 import android.content.Context
-import android.graphics.Color
-import android.support.design.widget.Snackbar
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.view.View.VISIBLE
-import android.widget.LinearLayout
-import android.widget.TextView
-import com.example.practice.inshort.R
+
 
 class VerticalViewPager : ViewPager {
 
@@ -61,7 +55,8 @@ class VerticalViewPager : ViewPager {
 //            user_activity.setVisibility(View.VISIBLE);
 //        }
 
-        return super.onTouchEvent(swapXY(ev))
+//        return super.onTouchEvent(swapXY(ev))
+        return false
     }
 
 

@@ -23,8 +23,8 @@ import kotlinx.android.synthetic.main.search_by_category.*
 import kotlinx.android.synthetic.main.search_by_category.view.*
 import java.util.ArrayList
 import android.app.Activity
-import com.example.practice.inshort.ui.Callback
-import com.example.practice.inshort.ui.MainViewPager
+import android.util.Log
+import android.widget.Toast
 
 
 class TopicFragment : Fragment(){
@@ -103,11 +103,9 @@ class TopicFragment : Fragment(){
         topicList.add(Topic(R.drawable.travel, "Travel"))
         topicList.add(Topic(R.drawable.misc, "Miscellaneous"))
 
-        val topics_adapter = TopicAdapter(this, topicList, view.context)
+        val topics_adapter = TopicAdapter(this, topicList, view.context,{name:Int->itemClicked(name,"Business")} )
         topics.adapter = topics_adapter
 
-        var newPageNumber = 27
-//        mCallback1.setViewPagerCurrentPage(newPageNumber);
         return view
     }
 
@@ -117,28 +115,25 @@ class TopicFragment : Fragment(){
 */
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is AppCompatActivity) {
-            mCallback1 = context as Callback
+        if (context is Callback) {
+            listener = context
         } else {
             throw RuntimeException(context!!.toString() + " must implement FragmentEvent")
         }
     }
-
-
-
-    fun setViewPager(i:Int) {
-        if (i>=0) {
-            mCallback2.setViewPagerCurrentPage(i)
-        }
-
+    fun itemClicked(name:Int, msg:String){
+        Toast.makeText(context,"item clicked"+name, Toast.LENGTH_LONG).show()
+        Log.d("msg","item clicked"+name)
+        onButtonPressed(name, msg)
     }
 
-    fun onButtonPressed(msg: Int) {
-        listener?.setViewPagerCurrentPage(msg)
+
+    fun onButtonPressed(pageno:Int, msg:String) {
+        listener?.setViewPagerCurrentPage(pageno, msg)
     }
 
     interface Callback {
-        fun setViewPagerCurrentPage(page: Int)
+        fun setViewPagerCurrentPage(page: Int, msg:String)
     }
 
     fun setListener(callback:AppCompatActivity) {

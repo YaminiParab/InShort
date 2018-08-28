@@ -47,12 +47,18 @@ class NewsFragment : Fragment() {
         })
 
         val verticalViewPager = view.findViewById(R.id.vPager) as VerticalViewPager?
-        verticalViewPager?.adapter = adapter
+        verticalViewPager?.hasFocusable()
 
+        verticalViewPager?.adapter = adapter
+        verticalViewPager?.setCurrentItem(1)
         return view
 
 
     }
+
+
+
+
 
 
 

@@ -19,5 +19,4 @@ class MainActivity2 : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
     }
-
 }

@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.practice.inshort.ui.NewsActivity"
     android:id="@+id/main_new_detail">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <com.example.practice.inshort.ui.VerticalViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/vPager">
     </com.example.practice.inshort.ui.VerticalViewPager>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/toolbarlayout"

@@ -57,11 +57,8 @@ class NewsAdapter(val context: Context)
             }
             val mypref = context.getSharedPreferences("source_url", Context.MODE_PRIVATE)
             val editor =mypref.edit()
-//            editor.putString("news_url",source_url )
             editor.commit()
 
-//            getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
-            true
         }
 
 

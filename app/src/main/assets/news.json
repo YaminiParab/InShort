@@ -48,11 +48,11 @@
     },
     {
       "source":  "Gizmodo.com",
-      "author": null,
+      "author": "The Associated Press",
       "title": "Jeff Bezos Details Plan to Make Blue Origin the Amazon of the Moon",
-      "description": null,
+      "description": "Jeff Bezos",
       "url": "https://gizmodo.com/jeff-bezos-details-plan-to-make-blue-origin-the-amazon-1826375233",
-      "urlToImage": null,
+      "urlToImage": "https://img.etimg.com/thumb/msid-64362467,width-672,resizemode-4,imgsize-60063/data-privacy-thinkstok.jpg",
       "publishedAt": "2018-05-29T00:39:44Z",
 	  "topics":["World","Business"],
 	  "categories":["All News","Trending","Top Stories"]
@@ -70,7 +70,7 @@
     },
     {
       "source":  "Pressherald.com",
-      "author": null,
+      "author":"Alanna Petroff",
       "title": "Serge Dassault, French aircraft magnate, dies at 93",
       "description": "The billionaire politician and businessman inherited an aviation empire from his aircraft-designer father.",
       "url": "https://www.pressherald.com/2018/05/28/serge-dassault-french-aircraft-magnate-dies-at-93/",
@@ -114,7 +114,7 @@
     },
     {
       "source":  "The New York Times",
-      "author": null,
+      "author": "Elizabeth Elizalde",
       "title": "Truckers' Strike Paralyzes Brazil as President Courts Investors",
       "description": "Brazil, which has Latin America’s largest economy, has been crippled as truck drivers protesting rising fuel prices have blocked roads across the country.",
       "url": "https://www.nytimes.com/2018/05/28/world/americas/brazil-truckers-strike-economy.html",
@@ -202,11 +202,11 @@
     },
     {
       "source":  "Yahoo.com",
-      "author": null,
+      "author": "Kirk Spano",
       "title": "Oil sinks while global stocks gain on North Korea, euro shaken by Italy",
       "description": "U.S. oil futures sank to six-week lows on Monday on expectations that major producers may raise output, while Asian stocks and U.S. share futures gained on signs the United States and North Korea were still working towards holding a summit.  The euro bounced …",
       "url": "https://finance.yahoo.com/news/u-stock-futures-north-korea-024547363.html",
-      "urlToImage": null,
+      "urlToImage": "https://s3.amazonaws.com/main-newsbtc-images/2018/04/17064020/techanalysis-xrp2.jpg",
       "publishedAt": "2018-05-28T06:11:15Z",
 	  "topics":["World","Business"],
 	  "categories":["All News","Trending","Top Stories"]

@@ -15,6 +15,8 @@ import java.util.*
 //import jdk.nashorn.internal.objects.Global.getJSON
 //import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
+import android.widget.Toast
+import com.example.practice.inshort.fragment.TopicFragment
 //import jdk.nashorn.internal.objects.Global.getJSON
 //import com.sun.xml.internal.ws.streaming.XMLStreamReaderUtil.close
 
@@ -26,10 +28,25 @@ import kotlin.collections.ArrayList
 
 
 class NewsActivity : Activity() {
+//    override fun setViewPagerCurrentPage(page: Int, msg:String) {
+//        Toast.makeText(this,"Btn2 pressed", Toast.LENGTH_SHORT).show()
+////        if (viewpager!=null){
+////            viewpager.currentItem = 0
+////        }
+//
+//    }
+
+    lateinit var viewPagerAdapter: NewsAdapter
+
+    lateinit var viewPager: VerticalViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
+
+        viewPager = findViewById(R.id.vPager) as VerticalViewPager
+        viewPagerAdapter = NewsAdapter(this)
+        viewPager.setAdapter(viewPagerAdapter)
 
 
 //        get_json();
@@ -42,23 +59,6 @@ class NewsActivity : Activity() {
          }
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        val intent = intent
-//        var topic_name = intent.getStringExtra("topic_name")
-//        if (topic_name != null) {
-//            Log.d("topic namesdsdsdsadsa", topic_name)
-//            get_json();
-//        }
-//    }
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-//        val intent = intent
-//        var topic_name = intent.getStringExtra("topic_name")
-//        if (topic_name != null) {
-//            Log.d("topic namesdsdsdsadsa", topic_name)
-//            get_json();
-//        }
-//    }
 
     public fun get_json(): ArrayList<News> {
         val newsList: ArrayList<News> = ArrayList()

@@ -7,12 +7,15 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
 import com.example.practice.inshort.R
 import com.example.practice.inshort.adapter.SwipeAdapter
 import com.example.practice.inshort.fragment.TopicFragment
 
-class MainViewPager: Callback, AppCompatActivity() {
-    var change_page = 0
+class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
+
+
+    var change_page = 1
     lateinit var viewpager:ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +40,10 @@ class MainViewPager: Callback, AppCompatActivity() {
 
         return true;
     }
-    override fun setViewPagerCurrentPage(page: Int) {
+    override fun setViewPagerCurrentPage(page: Int, category:String) {
         //var viewpager1 = findViewById<ViewPager>(R.id.main_viewpager)
-        if (page >= 0) {
-        if(viewpager == null){
-            viewpager = findViewById<ViewPager>(R.id.main_viewpager)
-        }
+        Toast.makeText(this,"item clicked"+category, Toast.LENGTH_LONG).show()
             change_page = page
             viewpager.currentItem = change_page
-        }
     }
 }
