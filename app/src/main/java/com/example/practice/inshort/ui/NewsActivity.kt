@@ -3,20 +3,16 @@ package com.example.practice.inshort.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.example.practice.inshort.R
 import com.example.practice.inshort.adapter.NewsAdapter
 import com.example.practice.inshort.model.News
-import kotlinx.android.synthetic.main.activity_news.*
-
-import java.util.*
+import android.support.v4.app.FragmentManager
+import android.support.v7.app.AppCompatActivity
 //import com.example.practice.inshort.modal.JSONResponse
 //import jdk.nashorn.internal.objects.Global.getJSON
 //import retrofit2.converter.gson.GsonConverterFactory
 import android.util.Log
-import android.widget.Toast
-import com.example.practice.inshort.fragment.TopicFragment
 //import jdk.nashorn.internal.objects.Global.getJSON
 //import com.sun.xml.internal.ws.streaming.XMLStreamReaderUtil.close
 
@@ -27,7 +23,7 @@ import java.io.InputStream
 import kotlin.collections.ArrayList
 
 
-class NewsActivity : Activity() {
+class NewsActivity : AppCompatActivity() {
 //    override fun setViewPagerCurrentPage(page: Int, msg:String) {
 //        Toast.makeText(this,"Btn2 pressed", Toast.LENGTH_SHORT).show()
 ////        if (viewpager!=null){
@@ -45,7 +41,7 @@ class NewsActivity : Activity() {
         setContentView(R.layout.activity_news)
 
         viewPager = findViewById(R.id.vPager) as VerticalViewPager
-        viewPagerAdapter = NewsAdapter(this)
+        viewPagerAdapter = NewsAdapter(this, supportFragmentManager)
         viewPager.setAdapter(viewPagerAdapter)
 
 

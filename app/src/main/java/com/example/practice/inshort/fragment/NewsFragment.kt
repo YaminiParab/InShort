@@ -6,9 +6,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 
@@ -16,7 +14,6 @@ import com.example.practice.inshort.R
 import com.example.practice.inshort.adapter.NewsAdapter
 import com.example.practice.inshort.entity.NewsEntity
 import com.example.practice.inshort.model.NewsViewModel
-import com.example.practice.inshort.ui.NewsActivity
 import com.example.practice.inshort.ui.VerticalViewPager
 import kotlinx.android.synthetic.main.activity_news.view.*
 
@@ -32,7 +29,7 @@ class NewsFragment : Fragment() {
         var news_detail = view.news_detail
 
         news_detail.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false);
-        var adapter = NewsAdapter(view.context);
+        var adapter = NewsAdapter(view.context, this.fragmentManager!!);
 
 
 

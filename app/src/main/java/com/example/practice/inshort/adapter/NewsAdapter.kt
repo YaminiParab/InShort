@@ -1,7 +1,9 @@
 package com.example.practice.inshort.adapter
 
 import android.content.Context
-import android.support.v4.view.PagerAdapter
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -12,11 +14,15 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.practice.inshort.R
 import com.example.practice.inshort.entity.NewsEntity
+import com.example.practice.inshort.fragment.NewsFragment
 import com.squareup.picasso.Picasso
 
 
-class NewsAdapter(val context: Context)
-    : PagerAdapter() {
+class NewsAdapter(val context: Context, val fm: FragmentManager)
+    : FragmentStatePagerAdapter(fm) {
+    override fun getItem(position: Int): Fragment {
+        return NewsFragment()
+    }
 
     var mLayoutInflater: LayoutInflater
     var position:Int=0
@@ -94,6 +100,7 @@ class NewsAdapter(val context: Context)
         Log.d("tag123", super.getItemPosition(`object`).toString())
         return super.getItemPosition(`object`)
     }}
+
 
 
 

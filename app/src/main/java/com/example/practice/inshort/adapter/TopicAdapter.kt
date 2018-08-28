@@ -36,7 +36,7 @@ class TopicAdapter (val fragment : Fragment, val topicsList: ArrayList<Topic>, v
         holder.topic_name.setText(topics.image_name)
         Picasso.with(context).load(topics.image).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.topic_image)
         var view_pager_obj = MainViewPager()
-        var newsadp = NewsAdapter(mContext)
+//        var newsadp = NewsAdapter(mContext)
     }
 
     class ViewHolder(view:View, context:Context):RecyclerView.ViewHolder(view)  {
