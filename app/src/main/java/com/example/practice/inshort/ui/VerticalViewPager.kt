@@ -3,6 +3,7 @@ package com.example.practice.inshort.ui
 import android.content.Context
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
@@ -55,10 +56,14 @@ class VerticalViewPager : ViewPager {
 //            user_activity.setVisibility(View.VISIBLE);
 //        }
 
-//        return super.onTouchEvent(swapXY(ev))
-        return false
+        return super.onTouchEvent(swapXY(ev))
+//        return false
     }
 
+    override fun performClick(): Boolean {
+        Log.d("VerticalViewPager", "performClick called")
+        return super.performClick()
+    }
 
     private inner class VerticalViewPagerTransform : ViewPager.PageTransformer {
         override fun transformPage(page: View, position: Float) {

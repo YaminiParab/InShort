@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.example.practice.inshort.R
 import com.example.practice.inshort.adapter.NewsAdapter
@@ -29,9 +30,9 @@ class NewsFragment : Fragment() {
         mNewsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         view = inflater.inflate(R.layout.activity_news, container, false)
 
-        var news_detail = view.news_detail
+       /* var news_detail = view.news_detail
 
-        news_detail.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false);
+        news_detail.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false);*/
         var adapter = NewsAdapter(view.context);
 
 
@@ -47,8 +48,18 @@ class NewsFragment : Fragment() {
         })
 
         val verticalViewPager = view.findViewById(R.id.vPager) as VerticalViewPager?
-        verticalViewPager?.hasFocusable()
 
+        verticalViewPager?.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN ->{
+                        Toast.makeText(activity,"view touch", Toast.LENGTH_SHORT).show()
+                    } //Do Something
+                }
+
+                return v?.onTouchEvent(event) ?: true
+            }
+        })
         verticalViewPager?.adapter = adapter
         verticalViewPager?.setCurrentItem(1)
         return view

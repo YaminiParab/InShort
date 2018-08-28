@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.practice.inshort.ui.NewsActivity"
     android:id="@+id/main_new_detail">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:id="@+id/main_content"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -64,13 +64,13 @@
 
 
 
-    <android.support.v7.widget.RecyclerView
+   <!-- <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbarlayout"
         android:id="@+id/news_detail"
         />
-
+-->
 
 
 
