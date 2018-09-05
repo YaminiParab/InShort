@@ -37,28 +37,7 @@ class TopicFragment : Fragment(){
     private lateinit var mCallback2: Callback
     private var listener: Callback? = null
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//    }
     lateinit var topic_context:Context
-
-
-    companion object{
-        private val ARG_CAUGHT = "myFragment_caught"
-//        lateinit var activity: AppCompatActivity
-        private lateinit var mCallback1: Callback
-        fun newInstance(my_activity: AppCompatActivity):TopicFragment{
-//            if (context is Callback){
-            mCallback1 = my_activity as Callback
-//            }
-            val fragment = TopicFragment()
-            return fragment
-        }
-        fun getcontext():Callback {
-            return mCallback1
-        }
-    }
-
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -103,16 +82,12 @@ class TopicFragment : Fragment(){
         topicList.add(Topic(R.drawable.travel, "Travel"))
         topicList.add(Topic(R.drawable.misc, "Miscellaneous"))
 
-        val topics_adapter = TopicAdapter(this, topicList, view.context,{name:Int->itemClicked(name,"Business")} )
+        val topics_adapter = TopicAdapter(this, topicList, view.context,{name:Int, msg:String->itemClicked(name,msg)} )
         topics.adapter = topics_adapter
 
         return view
     }
 
-    /*override fun setViewPagerCurrentPage(page: Int) {
-        frgment_page = page
-    }
-*/
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         if (context is Callback) {
@@ -122,8 +97,6 @@ class TopicFragment : Fragment(){
         }
     }
     fun itemClicked(name:Int, msg:String){
-        Toast.makeText(context,"item clicked"+name, Toast.LENGTH_LONG).show()
-        Log.d("msg","item clicked"+name)
         onButtonPressed(name, msg)
     }
 
@@ -136,9 +109,9 @@ class TopicFragment : Fragment(){
         fun setViewPagerCurrentPage(page: Int, msg:String)
     }
 
-    fun setListener(callback:AppCompatActivity) {
-        this.mCallback2 = callback as Callback
-    }
+//    fun setListener(callback:AppCompatActivity) {
+//        this.mCallback2 = callback as Callback
+//    }
 }
 
 

@@ -6,13 +6,13 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.example.practice.inshort.entity.NewsEntity
 import android.arch.persistence.db.SupportSQLiteDatabase
+import android.arch.persistence.room.TypeConverters
 import android.os.AsyncTask
-import android.util.Log
-import com.example.practice.inshort.fragment.NewsFragment
 import com.example.practice.inshort.ui.Utility
 
-
+@TypeConverters(Converters::class)
 @Database(entities = arrayOf(NewsEntity::class), version = 1)
+
 abstract class NewsDatabase : RoomDatabase() {
 
     abstract fun newsDao(): NewsDao

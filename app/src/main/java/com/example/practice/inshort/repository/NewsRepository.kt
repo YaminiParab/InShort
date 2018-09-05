@@ -11,16 +11,24 @@ import android.os.AsyncTask
 class NewsRepository(application: Application) {
 
     private var mNewsDao: NewsDao
-    internal var allNews: LiveData<List<NewsEntity>>
+    lateinit var  allNews: LiveData<List<NewsEntity>>
     var db: NewsDatabase? = null
     init {
         db = NewsDatabase.getDatabase(application)
         mNewsDao = db!!.newsDao()
-        allNews = mNewsDao.getAllNews()
+
     }
 
     fun insert(word: NewsEntity) {
         insertAsyncTask(mNewsDao).execute(word)
+    }
+
+    fun getNewsByTopics(topic:String):LiveData<List<NewsEntity>> {
+        return mNewsDao.filterNews(topic)
+
+    }
+    fun repoAllNews():LiveData<List<NewsEntity>> {
+        return  mNewsDao.getAllNews()
     }
 
     private class insertAsyncTask internal constructor(private val mAsyncTaskDao: NewsDao) : AsyncTask<NewsEntity, Void, Void>() {
@@ -30,4 +38,8 @@ class NewsRepository(application: Application) {
             return null
         }
     }
-}
+
+
+
+    }
+

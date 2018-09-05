@@ -13,7 +13,7 @@ import android.support.v4.app.Fragment
 import com.example.practice.inshort.ui.MainViewPager
 
 
-class TopicAdapter (val fragment : Fragment, val topicsList: ArrayList<Topic>, val context:Context,val clickListener:(Int) -> Unit):RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
+class TopicAdapter (val fragment : Fragment, val topicsList: ArrayList<Topic>, val context:Context,val clickListener:(Int, String) -> Unit):RecyclerView.Adapter<TopicAdapter.ViewHolder>() {
 
 
 
@@ -35,8 +35,6 @@ class TopicAdapter (val fragment : Fragment, val topicsList: ArrayList<Topic>, v
         val topics = topicsList?.get(position);
         holder.topic_name.setText(topics.image_name)
         Picasso.with(context).load(topics.image).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.topic_image)
-        var view_pager_obj = MainViewPager()
-        var newsadp = NewsAdapter(mContext)
     }
 
     class ViewHolder(view:View, context:Context):RecyclerView.ViewHolder(view)  {
@@ -50,10 +48,10 @@ class TopicAdapter (val fragment : Fragment, val topicsList: ArrayList<Topic>, v
         val topic_image = view.imageview
 
         val topic_name = view.image_name
-        fun bindItems(name:String,clickListener:(Int)->Unit){
+        fun bindItems(name:String,clickListener:(Int, String)->Unit){
            topic_name.text=name
-            topic_name.setOnClickListener{clickListener(1)}
-            topic_image.setOnClickListener{clickListener(1)}
+            topic_name.setOnClickListener{clickListener(1, name)}
+            topic_image.setOnClickListener{clickListener(1, name)}
         }
 
     }

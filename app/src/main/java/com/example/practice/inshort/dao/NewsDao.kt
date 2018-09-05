@@ -19,6 +19,10 @@ interface NewsDao {
     @Query("SELECT * from news_table ORDER BY title ASC")
     fun getAllNews(): LiveData<List<NewsEntity>>
 
+
+    @Query("SELECT * from news_table where news_table.topics like :category_name ORDER BY title ASC")
+    fun filterNews(category_name: String): LiveData<List<NewsEntity>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertWithNews(news: List<NewsEntity>)
 }

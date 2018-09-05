@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.practice.inshort.R
 import com.example.practice.inshort.adapter.SwipeAdapter
+import com.example.practice.inshort.fragment.NewsFragment
 import com.example.practice.inshort.fragment.TopicFragment
 
 class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
@@ -17,6 +18,8 @@ class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
 
     var change_page = 1
     lateinit var viewpager:ViewPager
+    var category:String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +28,12 @@ class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
 
         viewpager = findViewById(R.id.main_viewpager)
         if (viewpager != null) {
-            val pagerAdapter = SwipeAdapter(supportFragmentManager, 0, this@MainViewPager)
+            val pagerAdapter = SwipeAdapter(supportFragmentManager, 0, this@MainViewPager,
+                    category)
             viewpager.adapter = pagerAdapter
             viewpager.currentItem = change_page
         }
+
 
 
     }
@@ -41,9 +46,19 @@ class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
         return true;
     }
     override fun setViewPagerCurrentPage(page: Int, category:String) {
-        //var viewpager1 = findViewById<ViewPager>(R.id.main_viewpager)
-        Toast.makeText(this,"item clicked"+category, Toast.LENGTH_LONG).show()
+        if (viewpager != null) {
+            if (page == 1) {
+                NewsFragment.newInstance(category)
+            }
+            val pagerAdapter = SwipeAdapter(supportFragmentManager, 0,
+                    this@MainViewPager, category)
+            viewpager.adapter = pagerAdapter
+            viewpager.currentItem = change_page
+        }
+        else{
             change_page = page
             viewpager.currentItem = change_page
+        }
+
     }
 }
