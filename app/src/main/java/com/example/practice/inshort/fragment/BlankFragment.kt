@@ -30,29 +30,33 @@ private const val ARG_PARAM2 = "param2"
 class BlankFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
+    var new_url:String = ""
+    var mywebview: WebView? = null
+    companion object {
 
+        var news_url:String = ""
+
+        fun newInstance(url: String): BlankFragment {
+            news_url = url
+            val fragment = BlankFragment()
+            return fragment
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view: View
-        var mywebview: WebView? = null
-        val mypref = context?.getSharedPreferences("source_url", Context.MODE_PRIVATE)
-        val new_url = mypref?.getString("news_url","")
-        Log.d("latest_url", new_url)
-
 
         view = inflater.inflate(R.layout.news_webview, container, false)
         mywebview = view.findViewById<WebView>(R.id.webview)
-        mywebview!!.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                view?.loadUrl(url)
-                return true
-            }
-        }
-        mywebview!!.loadUrl(new_url)
+        load_url()
         return view
     }
 
+    fun load_url(){
+
+        mywebview!!.loadUrl(news_url)
+    }
 
 
 

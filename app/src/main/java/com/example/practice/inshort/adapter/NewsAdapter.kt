@@ -72,7 +72,6 @@ class NewsAdapter(val context: Context)
     }
 
     fun getCurrentIndex():Int{
-        Log.d("currunt index", position.toString())
         return position
     }
 
@@ -89,9 +88,7 @@ class NewsAdapter(val context: Context)
     }
 
 
-
     override fun getItemPosition(`object`: Any): Int {
-        Log.d("tag123", super.getItemPosition(`object`).toString())
         return super.getItemPosition(`object`)
     }}
 

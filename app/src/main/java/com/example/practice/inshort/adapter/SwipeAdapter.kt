@@ -8,11 +8,11 @@ import com.example.practice.inshort.fragment.BlankFragment
 import com.example.practice.inshort.fragment.NewsFragment
 import com.example.practice.inshort.fragment.TopicFragment
 
-public class SwipeAdapter(fragmentManager: FragmentManager, position: Int, mactivity:AppCompatActivity, category: String) : FragmentPagerAdapter(fragmentManager) {
+public class SwipeAdapter(fragmentManager: FragmentManager, position: Int, mactivity:AppCompatActivity, category: String, url:String) : FragmentPagerAdapter(fragmentManager) {
 
     lateinit var mactivity:AppCompatActivity
     var category=category
-
+    var url=url
     init{
         this.mactivity = mactivity
     }
@@ -20,7 +20,7 @@ public class SwipeAdapter(fragmentManager: FragmentManager, position: Int, macti
     override fun getItem(position: Int): Fragment {
         var topicfragment = TopicFragment()
         var newsfragment = NewsFragment.newInstance(category)
-        var webviewfragment = BlankFragment()
+        var webviewfragment = BlankFragment.newInstance(url)
         return when (position) {
             0 -> topicfragment
             1 ->  newsfragment
