@@ -30,7 +30,6 @@ private const val ARG_PARAM2 = "param2"
 class BlankFragment : Fragment() {
     // TODO: Rename and change types of parameters
 
-    var new_url:String = ""
     var mywebview: WebView? = null
     companion object {
 
@@ -55,6 +54,15 @@ class BlankFragment : Fragment() {
 
     fun load_url(){
 
+        mywebview!!.setWebViewClient(object : WebViewClient() {
+
+            override fun onPageFinished(view: WebView, news_url: String) {
+                // And Here.
+                view.clearHistory()
+                super.onPageFinished(view, Companion.news_url)
+            }
+        })
+        mywebview!!.loadUrl("about:blank")
         mywebview!!.loadUrl(news_url)
     }
 

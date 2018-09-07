@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.practice.inshort.R
 import com.example.practice.inshort.entity.NewsEntity
+import com.example.practice.inshort.ui.VerticalViewPager
 import com.squareup.picasso.Picasso
 
 
@@ -47,6 +48,7 @@ class NewsAdapter(val context: Context)
         itemView.setOnTouchListener {v: View, m: MotionEvent ->
             var user_activity :LinearLayout
             user_activity = v.findViewById<LinearLayout>(R.id.user_activity_layout)
+
             if (user_activity.getVisibility() == View.VISIBLE)
             {
                 user_activity.setVisibility(View.INVISIBLE);

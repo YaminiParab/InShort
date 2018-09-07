@@ -51,8 +51,8 @@ class NewsFragment() : Fragment(){
         mNewsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         view = inflater.inflate(R.layout.activity_news, container, false)
 
-
         var adapter = NewsAdapter(view.context);
+        val verticalViewPager = view.findViewById(R.id.vPager) as VerticalViewPager?
         if (!cat_name.isEmpty()) {
             cat_name = "%"+ cat_name+"%"
             mNewsViewModel.get_topic_related_news(cat_name).observe(this, object : Observer<List<NewsEntity>> {
@@ -60,6 +60,11 @@ class NewsFragment() : Fragment(){
                     if (t != null) {
 
                         adapter.setNews(t)
+                        all_news = t
+                        if (verticalViewPager != null) {
+                            news_url = all_news.get(verticalViewPager.currentItem).url
+                            BlankFragment.newInstance(news_url)
+                        }
                     }
                 }
             })
@@ -71,6 +76,10 @@ class NewsFragment() : Fragment(){
 
                         adapter.setNews(t)
                         all_news = t
+                        if (verticalViewPager != null) {
+                            news_url = all_news.get(verticalViewPager.currentItem).url
+                            BlankFragment.newInstance(news_url)
+                        }
 
                     }//To change body of created functions use File | Settings | File Templates.
                 }
@@ -78,24 +87,17 @@ class NewsFragment() : Fragment(){
 
         }
 
-
-        val verticalViewPager = view.findViewById(R.id.vPager) as VerticalViewPager?
-
-        verticalViewPager?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN ->{
-                    }
+        if (verticalViewPager != null) {
+            verticalViewPager.addOnPageChangeListener(object : OnPageChangeListener {
+                override fun onPageScrollStateChanged(state: Int) {}
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+                override fun onPageSelected(position: Int) {
+                    current_item_position = verticalViewPager.currentItem
+                    news_url = all_news.get(current_item_position).url
+                    BlankFragment.newInstance(news_url)
                 }
-                current_item_position = verticalViewPager.currentItem+1
-                news_url = all_news.get(current_item_position).url
-                BlankFragment.newInstance(news_url)
-
-                return v?.onTouchEvent(event) ?: true
-
-            }
-        })
-
+            })
+        }
         verticalViewPager?.adapter = adapter
         return view
 
