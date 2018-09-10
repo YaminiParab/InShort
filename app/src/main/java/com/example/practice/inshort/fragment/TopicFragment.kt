@@ -109,9 +109,7 @@ class TopicFragment : Fragment(){
         fun setViewPagerCurrentPage(page: Int, msg:String)
     }
 
-//    fun setListener(callback:AppCompatActivity) {
-//        this.mCallback2 = callback as Callback
-//    }
+
 }
 
 

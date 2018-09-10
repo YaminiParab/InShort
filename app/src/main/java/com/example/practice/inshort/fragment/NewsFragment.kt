@@ -4,6 +4,7 @@ package com.example.practice.inshort.fragment
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -34,15 +35,20 @@ class NewsFragment() : Fragment(){
     var current_item_position:Int=0
     var news_url:String=""
     lateinit var all_news:List<NewsEntity>
+    var cat_name:String=""
     companion object {
 
-        lateinit var cat_name:String
+        lateinit var cat_name1:String
 
         fun newInstance(name: String): NewsFragment {
-            cat_name = name
+            cat_name1 = name
             val fragment = NewsFragment()
             return fragment
         }
+    }
+
+    fun set_cat(category:String) {
+        cat_name = category
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -50,8 +56,11 @@ class NewsFragment() : Fragment(){
         val view: View
         mNewsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         view = inflater.inflate(R.layout.activity_news, container, false)
+        val mypref = context?.getSharedPreferences("source_url", Context.MODE_PRIVATE)
 
+        var editor = mypref!!.edit()
         var adapter = NewsAdapter(view.context);
+
         val verticalViewPager = view.findViewById(R.id.vPager) as VerticalViewPager?
         if (!cat_name.isEmpty()) {
             cat_name = "%"+ cat_name+"%"
@@ -63,7 +72,8 @@ class NewsFragment() : Fragment(){
                         all_news = t
                         if (verticalViewPager != null) {
                             news_url = all_news.get(verticalViewPager.currentItem).url
-                            BlankFragment.newInstance(news_url)
+                            editor =editor.putString("news_url",news_url)
+                            editor.commit()
                         }
                     }
                 }
@@ -78,7 +88,8 @@ class NewsFragment() : Fragment(){
                         all_news = t
                         if (verticalViewPager != null) {
                             news_url = all_news.get(verticalViewPager.currentItem).url
-                            BlankFragment.newInstance(news_url)
+                            editor =editor.putString("news_url",news_url)
+                            editor.commit()
                         }
 
                     }//To change body of created functions use File | Settings | File Templates.
@@ -94,7 +105,8 @@ class NewsFragment() : Fragment(){
                 override fun onPageSelected(position: Int) {
                     current_item_position = verticalViewPager.currentItem
                     news_url = all_news.get(current_item_position).url
-                    BlankFragment.newInstance(news_url)
+                    editor =editor.putString("news_url",news_url)
+                    editor.commit()
                 }
             })
         }

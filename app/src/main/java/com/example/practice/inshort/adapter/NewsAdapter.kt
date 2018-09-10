@@ -57,10 +57,12 @@ class NewsAdapter(val context: Context)
             {
                 user_activity.setVisibility(View.VISIBLE);
             }
-            val mypref = context.getSharedPreferences("source_url", Context.MODE_PRIVATE)
-            val editor =mypref.edit()
-            editor.commit()
 
+//            val mypref = context.getSharedPreferences("source_url", Context.MODE_PRIVATE)
+//            val editor =mypref.edit()
+//            editor.commit()
+
+            v?.onTouchEvent(m) ?: true
         }
 
 

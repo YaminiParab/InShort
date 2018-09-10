@@ -1,5 +1,6 @@
 package com.example.practice.inshort.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
@@ -41,9 +42,9 @@ class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
                 if (position == 2) {
-                    web_fragment = viewpager.adapter!!.instantiateItem(viewpager,viewpager.currentItem) as BlankFragment
-                    web_fragment.load_url()
-
+//                    web_fragment = viewpager.adapter!!.instantiateItem(viewpager,viewpager.currentItem) as BlankFragment
+//                    web_fragment.load_url()
+                    //viewpager.currentItem = 2
                 }
             }
         })
@@ -63,7 +64,8 @@ class MainViewPager: AppCompatActivity(),TopicFragment.Callback {
         if (viewpager != null) {
             var url:String=""
             if (page == 1) {
-                NewsFragment.newInstance(category)
+                var abc = NewsFragment()
+                abc.set_cat(category)
             }
             val pagerAdapter = SwipeAdapter(supportFragmentManager, 0,
                     this@MainViewPager, category, url)
